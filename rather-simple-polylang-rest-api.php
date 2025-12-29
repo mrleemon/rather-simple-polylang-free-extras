@@ -6,6 +6,7 @@
  * Version: 3.0
  * Requires at least: 6.8
  * Requires PHP: 7.4
+ * Requires Plugins: polylang
  * Author: Oscar Ciutat
  * Author URI: http://oscarciutat.com/code/
  * Text Domain: rather-simple-polylang-rest-api
@@ -123,7 +124,6 @@ class Rather_Simple_Polylang_REST_API {
 		$args['lang'] = $lang;
 		return $args;
 	}
-
 }
 
 add_action( 'plugins_loaded', array( Rather_Simple_Polylang_REST_API::get_instance(), 'plugin_setup' ) );
