@@ -58,9 +58,6 @@ class Rather_Simple_Polylang_REST_API {
 	 * Used for regular plugin work.
 	 */
 	public function plugin_setup() {
-
-		$this->includes();
-
 		add_action( 'rest_api_init', array( $this, 'rest_api_init' ) );
 	}
 
@@ -68,12 +65,6 @@ class Rather_Simple_Polylang_REST_API {
 	 * Constructor. Intentionally left empty and public.
 	 */
 	public function __construct() {}
-
-	/**
-	 * Includes required core files used in admin and on the frontend.
-	 */
-	protected function includes() {
-	}
 
 	/**
 	 * Initialize REST API filters for Polylang language support.
