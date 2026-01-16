@@ -66,7 +66,7 @@ const addLanguageSelectControl = createHigherOrderComponent((BlockEdit) => {
 				<BlockEdit key="edit" {...props} />
 				{props.isSelected && (
 					<InspectorControls>
-						<PanelBody title={__('Language settings', 'rather-simple-polylang-free-extras')}>
+						<PanelBody title={__('Block visibility by language', 'rather-simple-polylang-free-extras')}>
 							{isLoading ? (
 								<Spinner />
 							) : (
