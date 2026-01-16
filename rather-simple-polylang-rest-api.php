@@ -58,13 +58,57 @@ class Rather_Simple_Polylang_REST_API {
 	 * Used for regular plugin work.
 	 */
 	public function plugin_setup() {
+		// add_action( 'enqueue_block_assets', array( $this, 'enqueue_block_assets' ) );
+		add_action( 'enqueue_block_editor_assets', array( $this, 'enqueue_block_editor_assets' ) );
 		add_action( 'rest_api_init', array( $this, 'rest_api_init' ) );
+		add_filter( 'render_block', array( $this, 'render_block' ), 10, 2 );
 	}
 
 	/**
 	 * Constructor. Intentionally left empty and public.
 	 */
 	public function __construct() {}
+
+	/**
+	 * Enqueues block editor assets
+	 *
+	 * @throws Error If block is not built.
+	 */
+	public function enqueue_block_editor_assets() {
+
+		$dir               = __DIR__;
+		$script_asset_path = "$dir/build/index.asset.php";
+		if ( ! file_exists( $script_asset_path ) ) {
+			throw new Error(
+				'You need to run `npm start` or `npm run build` for the block first.'
+			);
+		}
+		$script_asset = require $script_asset_path;
+
+		// Load styles.
+		/*
+		wp_enqueue_style(
+			'rather-simple-polylang-rest-api-css',
+			plugins_url( 'build/index.css', __FILE__ ),
+			null,
+			filemtime( plugin_dir_path( __FILE__ ) . 'build/index.css' )
+		);*/
+
+		// Load scripts.
+		wp_enqueue_script(
+			'rather-simple-polylang-rest-api',
+			plugins_url( 'build/index.js', __FILE__ ),
+			$script_asset['dependencies'],
+			filemtime( plugin_dir_path( __FILE__ ) . 'build/index.js' ),
+			array(
+				'in_footer' => true,
+				'strategy'  => 'defer',
+			)
+		);
+
+		// Translate scripts.
+		// wp_set_script_translations( 'rather-simple-polylang-rest-api', 'rather-simple-polylang-rest-api', plugin_dir_path( __FILE__ ) . 'languages' );
+	}
 
 	/**
 	 * Initialize REST API filters for Polylang language support.
@@ -114,6 +158,32 @@ class Rather_Simple_Polylang_REST_API {
 
 		$args['lang'] = $lang;
 		return $args;
+	}
+
+	/**
+	 * Render block
+	 */
+	public function render_block( $block_content, $block ) {
+		global $post;
+
+		if ( 'core/heading' !== $block['blockName'] ) {
+			return $block_content;
+		}
+
+		$language_visibility = $block['attrs']['languageVisibility'] ?? '';
+		$post_language       = pll_get_post_language( $post->ID );
+			$log_message     = 'shown language: ' . $language_visibility . "\n" .
+				'post_id: ' . $post->ID . "\n" .
+				'post_language: ' . $post_language;
+
+			error_log( $log_message, 1, 'oscarciutat@gmail.com' );
+		if ( '' !== $language_visibility ) {
+
+			if ( $post_language !== $language_visibility ) {
+				return '';
+			}
+		}
+		return $block_content;
 	}
 }
 
