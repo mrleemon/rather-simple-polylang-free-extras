@@ -58,7 +58,6 @@ class Rather_Simple_Polylang_Free_Extras {
 	 * Used for regular plugin work.
 	 */
 	public function plugin_setup() {
-		// add_action( 'enqueue_block_assets', array( $this, 'enqueue_block_assets' ) );
 		add_action( 'enqueue_block_editor_assets', array( $this, 'enqueue_block_editor_assets' ) );
 		add_action( 'rest_api_init', array( $this, 'rest_api_init' ) );
 		add_filter( 'render_block', array( $this, 'render_block' ), 10, 2 );
@@ -84,15 +83,6 @@ class Rather_Simple_Polylang_Free_Extras {
 			);
 		}
 		$script_asset = require $script_asset_path;
-
-		// Load styles.
-		/*
-		wp_enqueue_style(
-			'rather-simple-polylang-free-extras-css',
-			plugins_url( 'build/index.css', __FILE__ ),
-			null,
-			filemtime( plugin_dir_path( __FILE__ ) . 'build/index.css' )
-		);*/
 
 		// Load scripts.
 		wp_enqueue_script(
