@@ -28,7 +28,10 @@ function addLanguageVisibilityAttribute(settings, name) {
 		...settings,
 		attributes: {
 			...settings.attributes,
-			languageVisibility: { type: 'string' }
+			languageVisibility: {
+				type: 'string',
+                default: ''
+			}
 		}
 	};
 }
