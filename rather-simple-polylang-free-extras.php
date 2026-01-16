@@ -142,26 +142,31 @@ class Rather_Simple_Polylang_Free_Extras {
 	 * @return array Modified query arguments with language applied.
 	 */
 	public function rest_polylang_apply_lang( $args, $request ) {
+		// Ensure Polylang is active.
 		if ( ! function_exists( 'pll_languages_list' ) ) {
 			return $args;
 		}
 
+		// Extract the 'lang' parameter from the request.
 		$lang = $request->get_param( 'lang' );
 
+		// If no language is specified, use the site default language.
 		if ( ! $lang ) {
 			$lang = pll_default_language();
 		}
 
+		// Ensure the language code is actually registered in Polylang.
 		if ( ! in_array( $lang, pll_languages_list(), true ) ) {
 			return $args;
 		}
 
+		// Add the language to the query.
 		$args['lang'] = $lang;
 		return $args;
 	}
 
 	/**
-	 * Toggles block display based on the languageVisibility value.
+	 * Toggles block display based on the 'languageVisibility' value.
 	 *
 	 * @param string $block_content The original block content.
 	 * @param array  $block         The full block, including name and attributes.
@@ -170,9 +175,19 @@ class Rather_Simple_Polylang_Free_Extras {
 	public function render_block( $block_content, $block ) {
 		global $post;
 
+		// Ensure we are on a valid post and Polylang is active.
+		if ( ! $post instanceof WP_Post || ! function_exists( 'pll_get_post_language' ) ) {
+			return $block_content;
+		}
+
+		// Extract the 'languageVisibility' attribute from the block.
 		$language_visibility = $block['attrs']['languageVisibility'] ?? '';
-		$post_language       = pll_get_post_language( $post->ID, 'slug' );
+
 		if ( '' !== $language_visibility ) {
+			// Get the language slug of the current post.
+			$post_language = pll_get_post_language( $post->ID, 'slug' );
+
+			// If the post language doesn't match the block language, hide the block.
 			if ( $post_language !== $language_visibility ) {
 				return '';
 			}
