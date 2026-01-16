@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name: Rather Simple Polylang REST API
+ * Plugin Name: Rather Simple Polylang Free Extras
  * Plugin URI:
  * Update URI: false
  * Version: 1.0
@@ -9,9 +9,9 @@
  * Requires Plugins: polylang
  * Author: Oscar Ciutat
  * Author URI: http://oscarciutat.com/code/
- * Text Domain: rather-simple-polylang-rest-api
+ * Text Domain: rather-simple-polylang-free-extras
  * Domain Path: /languages
- * Description: Adds basic REST API support to the free version of Polylang
+ * Description: Adds basic REST API support and a selector to filter blocks by language to the free version of Polylang.
  * License: GPLv2 or later
  *
  * This program is free software; you can redistribute it and/or modify
@@ -27,13 +27,13 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *
- * @package rather_simple_polylang_rest_api
+ * @package rather_simple_polylang_free_extras
  */
 
 /**
  * Core class used to implement the plugin.
  */
-class Rather_Simple_Polylang_REST_API {
+class Rather_Simple_Polylang_Free_Extras {
 
 	/**
 	 * Plugin instance.
@@ -88,7 +88,7 @@ class Rather_Simple_Polylang_REST_API {
 		// Load styles.
 		/*
 		wp_enqueue_style(
-			'rather-simple-polylang-rest-api-css',
+			'rather-simple-polylang-free-extras-css',
 			plugins_url( 'build/index.css', __FILE__ ),
 			null,
 			filemtime( plugin_dir_path( __FILE__ ) . 'build/index.css' )
@@ -96,7 +96,7 @@ class Rather_Simple_Polylang_REST_API {
 
 		// Load scripts.
 		wp_enqueue_script(
-			'rather-simple-polylang-rest-api',
+			'rather-simple-polylang-free-extras',
 			plugins_url( 'build/index.js', __FILE__ ),
 			$script_asset['dependencies'],
 			filemtime( plugin_dir_path( __FILE__ ) . 'build/index.js' ),
@@ -107,7 +107,7 @@ class Rather_Simple_Polylang_REST_API {
 		);
 
 		// Translate scripts.
-		// wp_set_script_translations( 'rather-simple-polylang-rest-api', 'rather-simple-polylang-rest-api', plugin_dir_path( __FILE__ ) . 'languages' );
+		wp_set_script_translations( 'rather-simple-polylang-free-extras', 'rather-simple-polylang-free-extras', plugin_dir_path( __FILE__ ) . 'languages' );
 	}
 
 	/**
@@ -177,4 +177,4 @@ class Rather_Simple_Polylang_REST_API {
 	}
 }
 
-add_action( 'plugins_loaded', array( Rather_Simple_Polylang_REST_API::get_instance(), 'plugin_setup' ) );
+add_action( 'plugins_loaded', array( Rather_Simple_Polylang_Free_ExtrasI::get_instance(), 'plugin_setup' ) );

@@ -1,4 +1,4 @@
-=== Rather Simple Polylang REST API ===
+=== Rather Simple Polylang Free Extras ===
 Contributors: leemon
 Tags: polylang, multilanguage, language, translation
 Requires at least: 6.9
@@ -7,11 +7,11 @@ Stable tag: 1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Adds basic REST API support to the free version of Polylang 
+Adds basic REST API support and a selector to filter blocks by language to the free version of Polylang.
 
 == Description ==
 
-Adds basic REST API support to the free version of Polylang 
+Adds basic REST API support and a selector to filter blocks by language to the free version of Polylang.
 
 This plugin is experimental and is provided with no support or warranty. 
 
