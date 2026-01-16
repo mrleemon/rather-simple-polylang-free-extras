@@ -30,7 +30,7 @@ function addLanguageVisibilityAttribute(settings, name) {
 			...settings.attributes,
 			languageVisibility: {
 				type: 'string',
-                default: ''
+				default: ''
 			}
 		}
 	};
@@ -82,7 +82,11 @@ const addLanguageSelectControl = createHigherOrderComponent((BlockEdit) => {
 										},
 										...languages
 									]}
-									onChange={(value) => setAttributes({ languageVisibility: value })}
+									onChange={(value) => {
+										setAttributes({
+											languageVisibility: value === '' ? undefined : value
+										});
+									}}
 								/>
 							)}
 						</PanelBody>
