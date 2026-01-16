@@ -177,4 +177,4 @@ class Rather_Simple_Polylang_Free_Extras {
 	}
 }
 
-add_action( 'plugins_loaded', array( Rather_Simple_Polylang_Free_ExtrasI::get_instance(), 'plugin_setup' ) );
+add_action( 'plugins_loaded', array( Rather_Simple_Polylang_Free_Extras::get_instance(), 'plugin_setup' ) );
