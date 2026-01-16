@@ -161,7 +161,11 @@ class Rather_Simple_Polylang_Free_Extras {
 	}
 
 	/**
-	 * Render block
+	 * Toggles block display based on the languageVisibility value.
+	 *
+	 * @param string $block_content The original block content.
+	 * @param array  $block         The full block, including name and attributes.
+	 * @return string The filtered block content.
 	 */
 	public function render_block( $block_content, $block ) {
 		global $post;
