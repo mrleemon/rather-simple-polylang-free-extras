@@ -171,7 +171,7 @@ class Rather_Simple_Polylang_REST_API {
 		}
 
 		$language_visibility = $block['attrs']['languageVisibility'] ?? '';
-		$post_language       = pll_get_post_language( $post->ID );
+		$post_language       = pll_get_post_language( $post->ID, 'slug' );
 			$log_message     = 'shown language: ' . $language_visibility . "\n" .
 				'post_id: ' . $post->ID . "\n" .
 				'post_language: ' . $post_language;
