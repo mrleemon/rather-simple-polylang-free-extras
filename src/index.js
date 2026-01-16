@@ -18,7 +18,7 @@ import {
 import apiFetch from '@wordpress/api-fetch';
 
 /**
- * Filter function to add a new 'languageVisibility' attribute to all blocks.
+ * Add a 'languageVisibility' attribute to all blocks.
  *
  * @param   {Object} settings  Original block settings.
  * @returns {Object} Updated block settings with the new attribute.
@@ -34,8 +34,7 @@ function addLanguageVisibilityAttribute(settings, name) {
 }
 
 /**
- * Higher Order Component (HOC) that wraps the block editor component.
- * It injects a new panel into the block sidebar.
+ * Inject a new panel into the block sidebar.
  */
 const addLanguageSelectControl = createHigherOrderComponent((BlockEdit) => {
 	return (props) => {
