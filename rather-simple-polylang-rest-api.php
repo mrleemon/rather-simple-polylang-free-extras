@@ -166,19 +166,9 @@ class Rather_Simple_Polylang_REST_API {
 	public function render_block( $block_content, $block ) {
 		global $post;
 
-		if ( 'core/heading' !== $block['blockName'] ) {
-			return $block_content;
-		}
-
 		$language_visibility = $block['attrs']['languageVisibility'] ?? '';
 		$post_language       = pll_get_post_language( $post->ID, 'slug' );
-			$log_message     = 'shown language: ' . $language_visibility . "\n" .
-				'post_id: ' . $post->ID . "\n" .
-				'post_language: ' . $post_language;
-
-			error_log( $log_message, 1, 'oscarciutat@gmail.com' );
 		if ( '' !== $language_visibility ) {
-
 			if ( $post_language !== $language_visibility ) {
 				return '';
 			}
