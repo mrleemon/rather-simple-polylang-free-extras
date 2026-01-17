@@ -50,6 +50,15 @@ function addLanguageVisibilityAttribute(settings, name) {
 const addLanguageSelectControl = createHigherOrderComponent((BlockEdit) => {
 	return (props) => {
 		const { attributes, setAttributes } = props;
+
+		// List of blocks to exclude.
+        const excludedBlocks = ['core/widget-area', 'core/legacy-widget'];
+
+        // If this is an excluded block, just return the original block without the extra UI.
+        if (excludedBlocks.includes(props.name)) {
+            return <BlockEdit {...props} />;
+        }
+
 		const [languages, setLanguages] = useState([]);
 		const [isLoading, setIsLoading] = useState(true);
 
