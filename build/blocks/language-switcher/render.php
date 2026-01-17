@@ -20,10 +20,10 @@
 			'show_names'             => intval( $attributes['showNames'] ?? 1 ),
 			'display_names_as'       => esc_attr( $attributes['displayNamesAs'] ?? 'name' ),
 			'show_flags'             => intval( $attributes['showFlags'] ?? 0 ),
-			'hide_if_empty'          => intval( $attributes['hideIfEmpty'] ?? 1 ),
 			'force_home'             => intval( $attributes['forceHome'] ?? 0 ),
-			'hide_if_no_translation' => intval( $attributes['hideIfNoTranslation'] ?? 0 ),
 			'hide_current'           => intval( $attributes['hideCurrent'] ?? 0 ),
+			'hide_if_no_translation' => intval( $attributes['hideIfNoTranslation'] ?? 0 ),
+			'hide_if_empty'          => intval( $attributes['hideIfEmpty'] ?? 1 ),
 		)
 	);
 	echo $language_switcher;
