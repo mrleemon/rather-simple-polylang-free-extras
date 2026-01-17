@@ -44,6 +44,12 @@ function addLanguageVisibilityAttribute(settings, name) {
 	};
 }
 
+addFilter(
+	'blocks.registerBlockType',
+	'occ/rather-simple-polylang-free-extras',
+	addLanguageVisibilityAttribute
+);
+
 /**
  * Inject a new panel into the block sidebar.
  */
@@ -112,12 +118,6 @@ const addLanguageSelectControl = createHigherOrderComponent((BlockEdit) => {
 		);
 	};
 }, 'addLanguageSelectControl');
-
-addFilter(
-	'blocks.registerBlockType',
-	'occ/rather-simple-polylang-free-extras',
-	addLanguageVisibilityAttribute
-);
 
 addFilter(
 	'editor.BlockEdit',
