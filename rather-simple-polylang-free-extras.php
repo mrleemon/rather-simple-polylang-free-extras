@@ -106,7 +106,7 @@ class Rather_Simple_Polylang_Free_Extras {
 	 * Initialize REST API filters for Polylang language support.
 	 */
 	public function rest_api_init() {
-
+		// Loop through all post types enabled for REST.
 		foreach ( get_post_types( array( 'show_in_rest' => true ) ) as $post_type ) {
 			add_filter(
 				"rest_{$post_type}_query",
@@ -116,6 +116,7 @@ class Rather_Simple_Polylang_Free_Extras {
 			);
 		}
 
+		// Loop through all taxonomies enabled for REST.
 		foreach ( get_taxonomies( array( 'show_in_rest' => true ) ) as $taxonomy ) {
 			add_filter(
 				"rest_{$taxonomy}_query",
@@ -163,7 +164,6 @@ class Rather_Simple_Polylang_Free_Extras {
 	 * @throws Error If block is not built.
 	 */
 	public function register_block() {
-
 		if ( ! function_exists( 'register_block_type' ) ) {
 			// The block editor is not active.
 			return;
@@ -191,21 +191,24 @@ class Rather_Simple_Polylang_Free_Extras {
 	 * @return array Modified block type arguments.
 	 */
 	public function register_block_type_args( $args, $block_name ) {
-
-		$excluded = array(
+		// List of blocks to exclude.
+		$excluded_blocks = array(
 			'core/widget-area',
 			'core/legacy-widget',
 			'occ/rather-simple-polylang-language-switcher',
 		);
 
-		if ( in_array( $block_name, $excluded, true ) ) {
+		// If this is an excluded block, return args unchanged.
+		if ( in_array( $block_name, $excluded_blocks, true ) ) {
 			return $args;
 		}
 
+		// Ensure the 'attributes' key exists in the args array to avoid errors.
 		if ( ! isset( $args['attributes'] ) ) {
 			$args['attributes'] = array();
 		}
 
+		// Add the 'languageVisibility' attribute into the block schema.
 		$args['attributes']['languageVisibility'] = array(
 			'type'    => 'string',
 			'default' => '',
