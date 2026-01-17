@@ -68,13 +68,13 @@ const Edit = (props) => {
 						checked={!!showNames}
 						onChange={toggleShowNames}
 					/>
-					{showNames && (
+					{!!showNames && (
 						<SelectControl
 							label={__('Display language names as', 'rather-simple-polylang-free-extras')}
-							valueue={displayNamesAs}
+							value={displayNamesAs}
 							options={[
-								{ label: __('Name', 'rather-simple-polylang-free-extras'), valueue: 'name' },
-								{ label: __('Slug', 'rather-simple-polylang-free-extras'), valueue: 'slug' },
+								{ label: __('Name', 'rather-simple-polylang-free-extras'), value: 'name' },
+								{ label: __('Slug', 'rather-simple-polylang-free-extras'), value: 'slug' },
 							]}
 							onChange={setDisplayNamesAs}
 						/>
