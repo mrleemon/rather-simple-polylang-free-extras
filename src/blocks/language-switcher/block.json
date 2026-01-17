@@ -1,0 +1,57 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "occ/rather-simple-polylang-language-switcher",
+	"title": "Language Switcher",
+	"description": "Display a language switcher.",
+	"textdomain": "rather-simple-polylang-free-extras",
+	"category": "widgets",
+	"attributes": {
+		"dropdown": {
+			"type": "boolean",
+			"default": false
+		},
+		"showNames": {
+			"type": "boolean",
+			"default": true
+		},
+		"displayNamesAs": {
+			"type": "string",
+			"default": "name"
+		},
+		"showFlags": {
+			"type": "boolean",
+			"default": false
+		},
+		"forceHome": {
+			"type": "boolean",
+			"default": false
+		},
+		"hideCurrent": {
+			"type": "boolean",
+			"default": false
+		},
+		"hideIfNoTranslation": {
+			"type": "boolean",
+			"default": false
+		},
+		"hideIfEmpty": {
+			"type": "boolean",
+			"default": true
+		}
+	},
+	"supports": {
+		"anchor": true,
+		"html": false,
+		"spacing": {
+			"margin": true,
+			"padding": true
+		},
+		"typography": {
+			"__experimentalFontFamily": true
+		}
+	},
+	"editorScript": "file:./index.js",
+	"style": "file:./style-index.css",
+	"render": "file:./render.php"
+}
