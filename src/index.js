@@ -25,7 +25,7 @@ import apiFetch from '@wordpress/api-fetch';
  */
 function addLanguageVisibilityAttribute(settings, name) {
 	// List of blocks to exclude.
-    const excludedBlocks = ['core/widget-area', 'core/legacy-widget'];
+    const excludedBlocks = ['core/widget-area', 'core/legacy-widget', 'occ/rather-simple-polylang-language-switcher'];
 
     // If this is an excluded block, return settings unchanged.
     if (excludedBlocks.includes(name)) {
@@ -56,7 +56,7 @@ addFilter(
 const addLanguageSelectControl = createHigherOrderComponent((BlockEdit) => {
 	return (props) => {
 		// List of blocks to exclude.
-        const excludedBlocks = ['core/widget-area', 'core/legacy-widget'];
+        const excludedBlocks = ['core/widget-area', 'core/legacy-widget', 'occ/rather-simple-polylang-language-switcher' ];
 
         // If this is an excluded block, just return the original block without the extra UI.
         if (excludedBlocks.includes(props.name)) {
