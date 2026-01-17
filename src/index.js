@@ -27,7 +27,7 @@ function addLanguageVisibilityAttribute(settings, name) {
 	// List of blocks to exclude.
     const excludedBlocks = ['core/widget-area', 'core/legacy-widget'];
 
-    // If the current block is in the exclusion list, return settings unchanged.
+    // If this is an excluded block, return settings unchanged.
     if (excludedBlocks.includes(name)) {
         return settings;
     }
