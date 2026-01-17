@@ -59,9 +59,9 @@ class Rather_Simple_Polylang_Free_Extras {
 	 */
 	public function plugin_setup() {
 		add_action( 'enqueue_block_editor_assets', array( $this, 'enqueue_block_editor_assets' ) );
-		add_filter( 'register_block_type_args', array( $this, 'register_block_type_args' ), 10, 2 );
 		add_action( 'rest_api_init', array( $this, 'rest_api_init' ) );
 		add_action( 'init', array( $this, 'register_block' ) );
+		add_filter( 'register_block_type_args', array( $this, 'register_block_type_args' ), 10, 2 );
 		add_filter( 'render_block', array( $this, 'render_block' ), 10, 2 );
 	}
 
