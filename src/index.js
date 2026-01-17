@@ -18,12 +18,20 @@ import {
 import apiFetch from '@wordpress/api-fetch';
 
 /**
- * Add a 'languageVisibility' attribute to all blocks.
+ * Add a 'languageVisibility' attribute to all blocks except 'core/widget-area' and 'core/legacy-widget'.
  *
  * @param   {Object} settings  Original block settings.
  * @returns {Object} Updated block settings with the new attribute.
  */
 function addLanguageVisibilityAttribute(settings, name) {
+	// List of blocks to exclude.
+    const excludedBlocks = ['core/widget-area', 'core/legacy-widget'];
+
+    // If the current block is in the exclusion list, return settings unchanged.
+    if (excludedBlocks.includes(name)) {
+        return settings;
+    }
+
 	return {
 		...settings,
 		attributes: {
