@@ -6,7 +6,7 @@
  * @param string   $content        Rendered block output. ie. <InnerBlocks.Content />.
  * @param WP_Block $block          The instance of the WP_Block class that represents the block being rendered.
  *
- * @package jn_core
+ * @package rather_simple_polylang_free_extras
  */
 
 ?>
