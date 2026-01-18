@@ -2,9 +2,7 @@
  * WordPress dependencies
  */
 import {
-	G,
 	Path,
-	Rect,
 	SVG,
 } from '@wordpress/primitives';
 import {
