@@ -4,7 +4,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/rather-simple-"
 "polylang-free-extras\n"
 "POT-Creation-Date: 2026-01-17T22:07:40+00:00\n"
-"PO-Revision-Date: 2026-01-17 23:08+0100\n"
+"PO-Revision-Date: 2026-01-18 09:18+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: es_ES\n"
@@ -75,7 +75,7 @@ msgstr "Muestra las banderas"
 #: build/blocks/language-switcher/index.js:1
 #: src/blocks/language-switcher/edit.js:88
 msgid "Forces link to front page"
-msgstr "Fuerza un enlace a la portada"
+msgstr "Fuerza un enlace a la página de inicio"
 
 #: build/blocks/language-switcher/index.js:1
 #: src/blocks/language-switcher/edit.js:93
