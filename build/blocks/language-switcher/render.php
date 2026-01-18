@@ -11,7 +11,7 @@
 
 ?>
 
-<div <?php echo wp_kses_data( get_block_wrapper_attributes() ); ?>>
+<ul <?php echo wp_kses_data( get_block_wrapper_attributes() ); ?>>
 <?php
 	$language_switcher = pll_the_languages(
 		array(
@@ -28,4 +28,4 @@
 	);
 	echo $language_switcher;
 	?>
-</div>
+</ul>

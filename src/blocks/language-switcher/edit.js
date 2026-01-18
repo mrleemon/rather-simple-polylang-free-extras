@@ -106,14 +106,14 @@ const Edit = (props) => {
 					/>
 				</PanelBody>
 			</InspectorControls>
-			<div {...blockProps}>
+			<ul {...blockProps}>
 				<Disabled>
 					<ServerSideRender
 						block="occ/rather-simple-polylang-language-switcher"
 						attributes={props.attributes}
 					/>
 				</Disabled>
-			</div >
+			</ul >
 		</>
 	);
 
