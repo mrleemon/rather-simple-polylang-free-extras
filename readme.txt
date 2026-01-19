@@ -13,7 +13,7 @@ Adds basic REST API support, a language switcher block and a selector to filter 
 
 Adds basic REST API support, a language switcher block and a selector to filter blocks by language to the free version of Polylang.
 
-This plugin is experimental and is provided with no support or warranty. 
+This plugin was developed primarily for my personal use to bridge specific feature gaps. As such, it is provided "as-is" without any official support or updates. If you require a stable, fully-supported solution with regular updates and professional assistance, I recommend purchasing a copy of Polylang Pro: https://polylang.pro/
 
 == Installation ==
 1. Upload the extracted plugin folder and contained files to your /wp-content/plugins/ directory
