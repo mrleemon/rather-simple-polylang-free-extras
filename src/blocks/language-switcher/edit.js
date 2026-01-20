@@ -23,11 +23,11 @@ const Edit = (props) => {
 	} = props;
 
 	const toggleDropdown = (value) => {
-		setAttributes({ dropdown: value ? 1 : 0 });
+		setAttributes({ dropdown: value });
 	}
 
 	const toggleShowNames = (value) => {
-		setAttributes({ showNames: value ? 1 : 0 });
+		setAttributes({ showNames: value });
 	}
 
 	const setDisplayNamesAs = (value) => {
@@ -35,23 +35,23 @@ const Edit = (props) => {
 	}
 
 	const toggleShowFlags = (value) => {
-		setAttributes({ showFlags: value ? 1 : 0 });
+		setAttributes({ showFlags: value });
 	}
 
 	const toggleForceHome = (value) => {
-		setAttributes({ forceHome: value ? 1 : 0 });
+		setAttributes({ forceHome: value });
 	}
 
 	const toggleHideCurrent = (value) => {
-		setAttributes({ hideCurrent: value ? 1 : 0 });
+		setAttributes({ hideCurrent: value });
 	}
 
 	const toggleHideIfNoTranslation = (value) => {
-		setAttributes({ hideIfNoTranslation: value ? 1 : 0 });
+		setAttributes({ hideIfNoTranslation: value });
 	}
 
 	const toggleHideEmpty = (value) => {
-		setAttributes({ hideIfEmpty: value ? 1 : 0 });
+		setAttributes({ hideIfEmpty: value });
 	}
 
 	return (

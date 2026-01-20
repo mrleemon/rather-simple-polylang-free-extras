@@ -12,7 +12,7 @@
 ?>
 
 <ul <?php echo wp_kses_data( get_block_wrapper_attributes() ); ?>>
-<?php
+	<?php
 	$language_switcher = pll_the_languages(
 		array(
 			'echo'                   => 0,
