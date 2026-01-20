@@ -89,7 +89,7 @@ const Edit = (props) => {
 						checked={!!forceHome}
 						onChange={toggleForceHome}
 					/>
-					{dropdown && (
+					{!dropdown && (
 						<ToggleControl
 							label={__('Hides the current language', 'rather-simple-polylang-free-extras')}
 							checked={!!hideCurrent}
