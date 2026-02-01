@@ -76,6 +76,11 @@ class Rather_Simple_Polylang_Free_Extras {
 	 * @throws Error If block is not built.
 	 */
 	public function enqueue_block_editor_assets() {
+		$current_screen = get_current_screen();
+		if ( 'post' === $current_screen->base ) {
+			// Don't add in the post editor.
+			return;
+		}
 
 		$dir               = __DIR__;
 		$script_asset_path = "$dir/build/index.asset.php";
