@@ -234,14 +234,14 @@ class Rather_Simple_Polylang_Free_Extras {
 		}
 
 		// Extract the 'pll_lang' attribute from the block.
-		$language_visibility = $block['attrs']['pll_lang'] ?? '';
+		$pll_lang = $block['attrs']['pll_lang'] ?? '';
 
-		if ( '' !== $language_visibility ) {
+		if ( '' !== $pll_lang ) {
 			// Get the language slug of the current post.
 			$post_language = pll_get_post_language( $post->ID, 'slug' );
 
 			// If the post language doesn't match the block language, hide the block.
-			if ( $post_language !== $language_visibility ) {
+			if ( $post_language !== $pll_lang ) {
 				return '';
 			}
 		}
