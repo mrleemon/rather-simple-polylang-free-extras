@@ -103,7 +103,7 @@ class Rather_Simple_Polylang_Free_Extras {
 	}
 
 	/**
-	 * Initialize REST API filters for Polylang language support.
+	 * Initializes REST API filters for Polylang language support.
 	 */
 	public function rest_api_init() {
 		// Loop through all post types enabled for REST.
@@ -128,7 +128,7 @@ class Rather_Simple_Polylang_Free_Extras {
 	}
 
 	/**
-	 * Apply Polylang language filter to REST API queries.
+	 * Applies Polylang language filter to REST API queries.
 	 *
 	 * @param array           $args    The REST API query arguments.
 	 * @param WP_REST_Request $request The current REST API request.
@@ -178,8 +178,9 @@ class Rather_Simple_Polylang_Free_Extras {
 	}
 
 	/**
-	 * Adds the 'languageVisibility' attribute to all blocks,
-	 * including server-side rendered (dynamic) blocks.
+	 * Adds a 'pll_lang' attribute to all blocks,
+	 * including server-side rendered blocks.
+	 * Using 'pll_lang' for consistency with Polylang Pro.
 	 *
 	 * Gutenberg only registers attributes for SSR blocks on the server.
 	 * Without this filter, attributes added via `blocks.registerBlockType`
@@ -208,8 +209,8 @@ class Rather_Simple_Polylang_Free_Extras {
 			$args['attributes'] = array();
 		}
 
-		// Add the 'languageVisibility' attribute into the block schema.
-		$args['attributes']['languageVisibility'] = array(
+		// Add the 'pll_lang' attribute into the block schema.
+		$args['attributes']['pll_lang'] = array(
 			'type'    => 'string',
 			'default' => '',
 		);
@@ -218,7 +219,7 @@ class Rather_Simple_Polylang_Free_Extras {
 	}
 
 	/**
-	 * Toggles block display based on the 'languageVisibility' value.
+	 * Toggles block display based on the 'pll_lang' value.
 	 *
 	 * @param string $block_content The original block content.
 	 * @param array  $block         The full block, including name and attributes.
@@ -232,8 +233,8 @@ class Rather_Simple_Polylang_Free_Extras {
 			return $block_content;
 		}
 
-		// Extract the 'languageVisibility' attribute from the block.
-		$language_visibility = $block['attrs']['languageVisibility'] ?? '';
+		// Extract the 'pll_lang' attribute from the block.
+		$language_visibility = $block['attrs']['pll_lang'] ?? '';
 
 		if ( '' !== $language_visibility ) {
 			// Get the language slug of the current post.

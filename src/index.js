@@ -18,12 +18,13 @@ import {
 import apiFetch from '@wordpress/api-fetch';
 
 /**
- * Add a 'languageVisibility' attribute to all blocks except 'core/widget-area' and 'core/legacy-widget'.
+ * Adds a 'pll_lang' attribute to all blocks.
+ * Using 'pll_lang' for consistency with Polylang Pro.
  *
  * @param   {Object} settings  Original block settings.
  * @returns {Object} Updated block settings with the new attribute.
  */
-function addLanguageVisibilityAttribute(settings, name) {
+function addPllLangAttribute(settings, name) {
 	// List of blocks to exclude.
     const excludedBlocks = ['core/widget-area', 'core/legacy-widget', 'occ/rather-simple-polylang-language-switcher'];
 
@@ -36,7 +37,7 @@ function addLanguageVisibilityAttribute(settings, name) {
 		...settings,
 		attributes: {
 			...settings.attributes,
-			languageVisibility: {
+			pll_lang: {
 				type: 'string',
 				default: ''
 			}
@@ -47,11 +48,11 @@ function addLanguageVisibilityAttribute(settings, name) {
 addFilter(
 	'blocks.registerBlockType',
 	'occ/rather-simple-polylang-free-extras',
-	addLanguageVisibilityAttribute
+	addPllLangAttribute
 );
 
 /**
- * Inject a new panel into the block sidebar.
+ * Injects a new panel into the block sidebar.
  */
 const addLanguageSelectControl = createHigherOrderComponent((BlockEdit) => {
 	return (props) => {
@@ -96,7 +97,7 @@ const addLanguageSelectControl = createHigherOrderComponent((BlockEdit) => {
 							) : (
 								<SelectControl
 									label={__('This block is displayed for:', 'rather-simple-polylang-free-extras')}
-									value={attributes.languageVisibility}
+									value={attributes.pll_lang}
 									options={[
 										{
 											label: __('All languages', 'rather-simple-polylang-free-extras'),
@@ -106,7 +107,7 @@ const addLanguageSelectControl = createHigherOrderComponent((BlockEdit) => {
 									]}
 									onChange={(value) => {
 										setAttributes({
-											languageVisibility: value === '' ? undefined : value
+											pll_lang: value === '' ? undefined : value
 										});
 									}}
 								/>
