@@ -18,7 +18,7 @@
 			'echo'                   => 0,
 			'dropdown'               => intval( $attributes['dropdown'] ?? 0 ),
 			'show_names'             => intval( $attributes['showNames'] ?? 1 ),
-			'display_names_as'       => esc_attr( $attributes['displayNamesAs'] ?? 'name' ),
+			'display_names_as'       => $attributes['displayNamesAs'] ?? 'name',
 			'show_flags'             => intval( $attributes['showFlags'] ?? 0 ),
 			'force_home'             => intval( $attributes['forceHome'] ?? 0 ),
 			'hide_current'           => intval( $attributes['hideCurrent'] ?? 0 ),
