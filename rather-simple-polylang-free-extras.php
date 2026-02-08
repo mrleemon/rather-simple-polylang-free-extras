@@ -113,6 +113,10 @@ class Rather_Simple_Polylang_Free_Extras {
 	public function rest_api_init() {
 		// Loop through all post types enabled for REST.
 		foreach ( get_post_types( array( 'show_in_rest' => true ) ) as $post_type ) {
+			// Check if Polylang is actually managing translations for this post type.
+			if ( function_exists( 'pll_is_translated_post_type' ) && ! pll_is_translated_post_type( $post_type ) ) {
+				continue;
+			}
 			add_filter(
 				"rest_{$post_type}_query",
 				array( $this, 'rest_polylang_apply_lang' ),
@@ -123,6 +127,10 @@ class Rather_Simple_Polylang_Free_Extras {
 
 		// Loop through all taxonomies enabled for REST.
 		foreach ( get_taxonomies( array( 'show_in_rest' => true ) ) as $taxonomy ) {
+			// Check if Polylang is actually managing translations for this taxonomy.
+			if ( function_exists( 'pll_is_translated_taxonomy' ) && ! pll_is_translated_taxonomy( $taxonomy ) ) {
+				continue;
+			}
 			add_filter(
 				"rest_{$taxonomy}_query",
 				array( $this, 'rest_polylang_apply_lang' ),
