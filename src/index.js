@@ -112,10 +112,10 @@ const addLanguageSelectControl = createHigherOrderComponent((BlockEdit) => {
 										}}
 									/>
 								) : language}
-								label={__('Select Language', 'rather-simple-polylang-free-extras')}
+								label={__('Select language', 'rather-simple-polylang-free-extras')}
 								controls={[
 									{
-										title: __('All Languages', 'rather-simple-polylang-free-extras'),
+										title: __('All languages', 'rather-simple-polylang-free-extras'),
 										icon: language,
 										onClick: () => setAttributes({ pll_lang: undefined }),
 										isActive: !attributes.pll_lang,
