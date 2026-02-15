@@ -18,6 +18,11 @@ import apiFetch from '@wordpress/api-fetch';
 import { language } from '@wordpress/icons';
 
 /**
+ * Internal dependencies
+ */
+import './editor.scss';
+
+/**
  * Adds a 'pll_lang' attribute to all blocks.
  * Using 'pll_lang' for consistency with Polylang Pro.
  *
