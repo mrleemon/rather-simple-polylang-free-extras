@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-01-17T22:07:40+00:00\n"
+"POT-Creation-Date: 2026-02-15T10:48:40+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: rather-simple-polylang-free-extras\n"
@@ -75,32 +75,29 @@ msgid "Forces link to front page"
 msgstr ""
 
 #: build/blocks/language-switcher/index.js:1
-#: src/blocks/language-switcher/edit.js:93
+#: src/blocks/language-switcher/edit.js:94
 msgid "Hides the current language"
 msgstr ""
 
 #: build/blocks/language-switcher/index.js:1
-#: src/blocks/language-switcher/edit.js:98
+#: src/blocks/language-switcher/edit.js:100
 msgid "Hides languages with no translation"
 msgstr ""
 
 #: build/blocks/language-switcher/index.js:1
-#: src/blocks/language-switcher/edit.js:103
+#: src/blocks/language-switcher/edit.js:105
 msgid "Hides empty languages"
 msgstr ""
 
-#: build/index.js:1
-#: src/index.js:93
+#: src/index - orig.js:94
 msgid "Block visibility by language"
 msgstr ""
 
-#: build/index.js:1
-#: src/index.js:98
+#: src/index - orig.js:99
 msgid "This block is displayed for:"
 msgstr ""
 
-#: build/index.js:1
-#: src/index.js:102
+#: src/index - orig.js:103
 msgid "All languages"
 msgstr ""
 
