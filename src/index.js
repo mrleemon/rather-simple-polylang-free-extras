@@ -5,10 +5,8 @@
 import { __ } from '@wordpress/i18n';
 import { addFilter } from '@wordpress/hooks';
 import { createHigherOrderComponent } from '@wordpress/compose';
-import { InspectorControls, BlockControls } from '@wordpress/block-editor';
+import { BlockControls } from '@wordpress/block-editor';
 import {
-	PanelBody,
-	SelectControl,
 	ToolbarDropdownMenu,
 	Spinner
 } from '@wordpress/components';
@@ -114,10 +112,10 @@ const addLanguageSelectControl = createHigherOrderComponent((BlockEdit) => {
 										}}
 									/>
 								) : language}
-								label={__('Select Language', 'text-domain')}
+								label={__('Select Language', 'rather-simple-polylang-free-extras')}
 								controls={[
 									{
-										title: __('All Languages', 'text-domain'),
+										title: __('All Languages', 'rather-simple-polylang-free-extras'),
 										icon: language,
 										onClick: () => setAttributes({ pll_lang: undefined }),
 										isActive: !attributes.pll_lang,
