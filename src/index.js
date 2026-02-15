@@ -102,7 +102,7 @@ const addLanguageSelectControl = createHigherOrderComponent((BlockEdit) => {
 				{props.isSelected && (
 					<BlockControls group="other">
 						{isLoading ? (
-							<div style={{ padding: '0 8px' }}><Spinner /></div>
+							<Spinner />
 						) : (
 							<ToolbarDropdownMenu
 								icon={currentLang?.flag ? (
