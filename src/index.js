@@ -5,10 +5,11 @@
 import { __ } from '@wordpress/i18n';
 import { addFilter } from '@wordpress/hooks';
 import { createHigherOrderComponent } from '@wordpress/compose';
-import { InspectorControls } from '@wordpress/block-editor';
+import { InspectorControls, BlockControls } from '@wordpress/block-editor';
 import {
 	PanelBody,
 	SelectControl,
+	ToolbarDropdownMenu,
 	Spinner
 } from '@wordpress/components';
 import {
@@ -16,6 +17,7 @@ import {
 	useEffect
 } from '@wordpress/element';
 import apiFetch from '@wordpress/api-fetch';
+import { language } from '@wordpress/icons';
 
 /**
  * Adds a 'pll_lang' attribute to all blocks.
@@ -26,12 +28,12 @@ import apiFetch from '@wordpress/api-fetch';
  */
 function addPllLangAttribute(settings, name) {
 	// List of blocks to exclude.
-    const excludedBlocks = ['core/widget-area', 'core/legacy-widget', 'occ/rather-simple-polylang-language-switcher'];
+	const excludedBlocks = ['core/widget-area', 'core/legacy-widget', 'occ/rather-simple-polylang-language-switcher'];
 
-    // If this is an excluded block, return settings unchanged.
-    if (excludedBlocks.includes(name)) {
-        return settings;
-    }
+	// If this is an excluded block, return settings unchanged.
+	if (excludedBlocks.includes(name)) {
+		return settings;
+	}
 
 	return {
 		...settings,
@@ -57,12 +59,12 @@ addFilter(
 const addLanguageSelectControl = createHigherOrderComponent((BlockEdit) => {
 	return (props) => {
 		// List of blocks to exclude.
-        const excludedBlocks = ['core/widget-area', 'core/legacy-widget', 'occ/rather-simple-polylang-language-switcher' ];
+		const excludedBlocks = ['core/widget-area', 'core/legacy-widget', 'occ/rather-simple-polylang-language-switcher'];
 
-        // If this is an excluded block, just return the original block without the extra UI.
-        if (excludedBlocks.includes(props.name)) {
-            return <BlockEdit {...props} />;
-        }
+		// If this is an excluded block, just return the original block without the extra UI.
+		if (excludedBlocks.includes(props.name)) {
+			return <BlockEdit {...props} />;
+		}
 
 		const { attributes, setAttributes } = props;
 		const [languages, setLanguages] = useState([]);
@@ -76,6 +78,7 @@ const addLanguageSelectControl = createHigherOrderComponent((BlockEdit) => {
 					const options = response.map((lang) => ({
 						label: lang.name,
 						value: lang.slug,
+						flag: lang.flag_url,
 					}));
 					setLanguages(options);
 					setIsLoading(false);
@@ -86,34 +89,60 @@ const addLanguageSelectControl = createHigherOrderComponent((BlockEdit) => {
 				});
 		}, []);
 
+		const currentLang = languages.find(
+			(l) => l.value === attributes.pll_lang
+		);
+
 		return (
 			<>
 				<BlockEdit key="edit" {...props} />
 				{props.isSelected && (
-					<InspectorControls>
-						<PanelBody title={__('Block visibility by language', 'rather-simple-polylang-free-extras')}>
-							{isLoading ? (
-								<Spinner />
-							) : (
-								<SelectControl
-									label={__('This block is displayed for:', 'rather-simple-polylang-free-extras')}
-									value={attributes.pll_lang}
-									options={[
-										{
-											label: __('All languages', 'rather-simple-polylang-free-extras'),
-											value: ''
-										},
-										...languages
-									]}
-									onChange={(value) => {
-										setAttributes({
-											pll_lang: value === '' ? undefined : value
-										});
-									}}
-								/>
-							)}
-						</PanelBody>
-					</InspectorControls>
+					<BlockControls group="other">
+						{isLoading ? (
+							<div style={{ padding: '0 8px' }}><Spinner /></div>
+						) : (
+							<ToolbarDropdownMenu
+								icon={currentLang?.flag ? (
+									<img
+										src={currentLang.flag}
+										alt={currentLang.label}
+										style={{
+											width: '23px',
+											height: 'auto',
+											padding: '2px',
+											objectFit: 'cover',
+										}}
+									/>
+								) : language}
+								label={__('Select Language', 'text-domain')}
+								controls={[
+									{
+										title: __('All Languages', 'text-domain'),
+										icon: language,
+										onClick: () => setAttributes({ pll_lang: undefined }),
+										isActive: !attributes.pll_lang,
+									},
+									...languages.map((lang) => ({
+										title: lang.label,
+										icon: (
+											<img
+												src={lang.flag}
+												alt={lang.label}
+												style={{
+													width: '23px',
+													height: 'auto',
+													padding: '2px',
+													display: 'block',
+												}}
+											/>
+										),
+										onClick: () => setAttributes({ pll_lang: lang.value }),
+										isActive: attributes.pll_lang === lang.value,
+									})),
+								]}
+							/>
+						)}
+					</BlockControls>
 				)}
 			</>
 		);
