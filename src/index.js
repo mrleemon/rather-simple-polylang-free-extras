@@ -112,8 +112,7 @@ const addLanguageSelectControl = createHigherOrderComponent((BlockEdit) => {
 										style={{
 											width: '23px',
 											height: 'auto',
-											padding: '2px',
-											objectFit: 'cover',
+											padding: '2px'
 										}}
 									/>
 								) : language}
@@ -128,16 +127,12 @@ const addLanguageSelectControl = createHigherOrderComponent((BlockEdit) => {
 									...languages.map((lang) => ({
 										title: lang.label,
 										icon: (
-											<img
-												src={lang.flag}
-												alt={lang.label}
-												style={{
-													width: '23px',
-													height: 'auto',
-													padding: '2px',
-													display: 'block',
-												}}
-											/>
+											<span className="pll-flag-wrapper">
+												<img
+													src={lang.flag}
+													alt={lang.label}
+												/>
+											</span>
 										),
 										onClick: () => setAttributes({ pll_lang: lang.value }),
 										isActive: attributes.pll_lang === lang.value,

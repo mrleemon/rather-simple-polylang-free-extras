@@ -1,1 +1,1 @@
-.components-dropdown-menu__menu-item.is-active img{border:1px solid #000}
+.components-dropdown-menu__menu-item .pll-flag-wrapper{align-items:center;display:flex;height:24px;justify-content:center;width:24px}.components-dropdown-menu__menu-item .pll-flag-wrapper img{filter:grayscale(1);height:auto;padding:2px;width:23px}.components-dropdown-menu__menu-item.is-active .pll-flag-wrapper img{filter:grayscale(0)}
