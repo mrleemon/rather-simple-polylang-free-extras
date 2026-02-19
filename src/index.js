@@ -7,6 +7,7 @@ import { addFilter } from '@wordpress/hooks';
 import { createHigherOrderComponent } from '@wordpress/compose';
 import { BlockControls } from '@wordpress/block-editor';
 import {
+	ToolbarGroup,
 	ToolbarDropdownMenu,
 	Spinner
 } from '@wordpress/components';
@@ -100,46 +101,48 @@ const addLanguageSelectControl = createHigherOrderComponent((BlockEdit) => {
 			<>
 				<BlockEdit key="edit" {...props} />
 				{props.isSelected && (
-					<BlockControls group="other">
-						{isLoading ? (
-							<Spinner />
-						) : (
-							<ToolbarDropdownMenu
-								icon={currentLang?.flag ? (
-									<img
-										src={currentLang.flag}
-										alt={currentLang.label}
-										style={{
-											width: '23px',
-											height: 'auto',
-											padding: '2px'
-										}}
-									/>
-								) : language}
-								label={__('Select language', 'rather-simple-polylang-free-extras')}
-								controls={[
-									{
-										title: __('All languages', 'rather-simple-polylang-free-extras'),
-										icon: language,
-										onClick: () => setAttributes({ pll_lang: undefined }),
-										isActive: !attributes.pll_lang,
-									},
-									...languages.map((lang) => ({
-										title: lang.label,
-										icon: (
-											<span className="pll-flag-wrapper">
-												<img
-													src={lang.flag}
-													alt={lang.label}
-												/>
-											</span>
-										),
-										onClick: () => setAttributes({ pll_lang: lang.value }),
-										isActive: attributes.pll_lang === lang.value,
-									})),
-								]}
-							/>
-						)}
+					<BlockControls>
+						<ToolbarGroup>
+							{isLoading ? (
+								<Spinner />
+							) : (
+								<ToolbarDropdownMenu
+									icon={currentLang?.flag ? (
+										<img
+											src={currentLang.flag}
+											alt={currentLang.label}
+											style={{
+												width: '23px',
+												height: 'auto',
+												padding: '2px'
+											}}
+										/>
+									) : language}
+									label={__('Select language', 'rather-simple-polylang-free-extras')}
+									controls={[
+										{
+											title: __('All languages', 'rather-simple-polylang-free-extras'),
+											icon: language,
+											onClick: () => setAttributes({ pll_lang: undefined }),
+											isActive: !attributes.pll_lang,
+										},
+										...languages.map((lang) => ({
+											title: lang.label,
+											icon: (
+												<span className="pll-flag-wrapper">
+													<img
+														src={lang.flag}
+														alt={lang.label}
+													/>
+												</span>
+											),
+											onClick: () => setAttributes({ pll_lang: lang.value }),
+											isActive: attributes.pll_lang === lang.value,
+										})),
+									]}
+								/>
+							)}
+						</ToolbarGroup>
 					</BlockControls>
 				)}
 			</>
