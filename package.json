@@ -4,8 +4,8 @@
   "version": "1.0.0",
   "license": "GPL-2.0-or-later",
   "devDependencies": {
-    "@wordpress/scripts": "^31.4.0",
-    "@wordpress/icons": "^11.6.0",
+    "@wordpress/scripts": "^31.5.0",
+    "@wordpress/icons": "^11.7.0",
     "dir-archiver": "^2.2.0"
   },
   "scripts": {
