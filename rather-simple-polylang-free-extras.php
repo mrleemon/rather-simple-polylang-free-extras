@@ -63,7 +63,7 @@ class Rather_Simple_Polylang_Free_Extras {
 		add_action( 'init', array( $this, 'register_block' ) );
 		add_filter( 'register_block_type_args', array( $this, 'register_block_type_args' ), 10, 2 );
 		add_filter( 'render_block', array( $this, 'render_block' ), 10, 2 );
-		add_filter( 'pre_get_block_template', array( $this, 'get_localized_block_template' ), 10, 3 );
+		add_filter( 'pre_get_block_template', array( $this, 'get_localized_block_template_part' ), 10, 3 );
 	}
 
 	/**
@@ -271,14 +271,14 @@ class Rather_Simple_Polylang_Free_Extras {
 	}
 
 	/**
-	 * Filters the block template to load a localized version if available.
+	 * Filters the block template part to load a localized version if available.
 	 *
 	 * @param object $template      The template object.
 	 * @param string $id            The template ID.
 	 * @param string $template_type The template type.
 	 * @return object The localized template or the original template.
 	 */
-	public function get_localized_block_template( $template, $id, $template_type ) {
+	public function get_localized_block_template_part( $template, $id, $template_type ) {
 
 		// Make sure Polylang exists.
 		if ( ! function_exists( 'pll_current_language' ) ) {
@@ -312,13 +312,13 @@ class Rather_Simple_Polylang_Free_Extras {
 		remove_filter( 'pre_get_block_template', array( self::get_instance(), 'get_localized_block_template' ), 10 );
 
 		// Try to load localized version.
-		$localized_template = get_block_template( $localized_id, 'wp_template_part' );
+		$localized_template_part = get_block_template( $localized_id, 'wp_template_part' );
 
 		// Re-add filter.
 		add_filter( 'pre_get_block_template', array( self::get_instance(), 'get_localized_block_template' ), 10, 3 );
 
-		if ( $localized_template ) {
-			return $localized_template;
+		if ( $localized_template_part ) {
+			return $localized_template_part;
 		}
 
 		// Fallback to original.
