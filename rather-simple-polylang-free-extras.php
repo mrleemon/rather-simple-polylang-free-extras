@@ -63,6 +63,7 @@ class Rather_Simple_Polylang_Free_Extras {
 		add_action( 'init', array( $this, 'register_block' ) );
 		add_filter( 'register_block_type_args', array( $this, 'register_block_type_args' ), 10, 2 );
 		add_filter( 'render_block', array( $this, 'render_block' ), 10, 2 );
+		add_filter( 'pre_get_block_template', array( $this, 'get_localized_block_template' ), 10, 3 );
 	}
 
 	/**
@@ -267,6 +268,61 @@ class Rather_Simple_Polylang_Free_Extras {
 			}
 		}
 		return $block_content;
+	}
+
+	/**
+	 * Filters the block template to load a localized version if available.
+	 *
+	 * @param object $template      The template object.
+	 * @param string $id            The template ID.
+	 * @param string $template_type The template type.
+	 * @return object The localized template or the original template.
+	 */
+	public function get_localized_block_template( $template, $id, $template_type ) {
+
+		// Make sure Polylang exists.
+		if ( ! function_exists( 'pll_current_language' ) ) {
+			return $template;
+		}
+
+		// Only target template parts.
+		if ( 'wp_template_part' !== $template_type ) {
+			return $template;
+		}
+
+		$lang = pll_current_language();
+
+		if ( ! $lang ) {
+			return $template;
+		}
+
+		// $id format: theme_slug//slug
+		$parts = explode( '//', $id );
+
+		if ( count( $parts ) !== 2 ) {
+			return $template;
+		}
+
+		list( $theme, $slug ) = $parts;
+
+		$localized_slug = "{$slug}__{$lang}";
+		$localized_id   = "{$theme}//{$localized_slug}";
+
+		// Prevent recursion.
+		remove_filter( 'pre_get_block_template', array( self::get_instance(), 'get_localized_block_template' ), 10 );
+
+		// Try to load localized version.
+		$localized_template = get_block_template( $localized_id, 'wp_template_part' );
+
+		// Re-add filter.
+		add_filter( 'pre_get_block_template', array( self::get_instance(), 'get_localized_block_template' ), 10, 3 );
+
+		if ( $localized_template ) {
+			return $localized_template;
+		}
+
+		// Fallback to original.
+		return $template;
 	}
 }
 
