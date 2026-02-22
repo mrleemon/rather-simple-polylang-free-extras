@@ -78,8 +78,9 @@ class Rather_Simple_Polylang_Free_Extras {
 	 */
 	public function enqueue_block_editor_assets() {
 		$current_screen = get_current_screen();
-		if ( 'post' === $current_screen->base ) {
-			// Don't add in the post editor.
+
+		// Only proceed if we are on the widgets screen.
+		if ( 'widgets' !== $current_screen->base ) {
 			return;
 		}
 
