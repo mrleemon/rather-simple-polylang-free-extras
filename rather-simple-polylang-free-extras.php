@@ -11,7 +11,7 @@
  * Author URI: http://oscarciutat.com/code/
  * Text Domain: rather-simple-polylang-free-extras
  * Domain Path: /languages
- * Description: Enhances the free version of Polylang with basic REST API support, a language switcher block, a language selector for block widgets and basic localization for block template parts.
+ * Description: Enhances the free version of Polylang with basic REST API support, a language switcher block, a language filter for block widgets and basic localization for block template parts.
  * License: GPLv2 or later
  *
  * This program is free software; you can redistribute it and/or modify

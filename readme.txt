@@ -7,11 +7,11 @@ Stable tag: 1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Enhances the free version of Polylang with basic REST API support, a language switcher block, a language selector for block widgets and basic localization for block template parts.
+Enhances the free version of Polylang with basic REST API support, a language switcher block, a language filter for block widgets and basic localization for block template parts.
 
 == Description ==
 
-Enhances the free version of Polylang with basic REST API support, a language switcher block, a language selector for block widgets and basic localization for block template parts.
+Enhances the free version of Polylang with basic REST API support, a language switcher block, a language filter for block widgets and basic localization for block template parts.
 
 This plugin was developed primarily for my personal use to bridge specific feature gaps. As such, it is provided "as-is" without any official support or updates. If you require a stable, fully-supported solution with regular updates and professional assistance, I recommend purchasing a copy of Polylang Pro: https://polylang.pro/
 
