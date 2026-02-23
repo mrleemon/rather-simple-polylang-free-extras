@@ -79,8 +79,8 @@ class Rather_Simple_Polylang_Free_Extras {
 	public function enqueue_block_editor_assets() {
 		$current_screen = get_current_screen();
 
-		// Only proceed if we are on the widgets screen.
-		if ( 'widgets' !== $current_screen->base ) {
+		// Only proceed if we are on the blockified widgets screen.
+		if ( 'widgets' !== $current_screen->base || ! $current_screen->is_block_editor ) {
 			return;
 		}
 
@@ -272,7 +272,7 @@ class Rather_Simple_Polylang_Free_Extras {
 	}
 
 	/**
-	 * Filters the block template part to load a localized version if available.
+	 * Loads a localized version of the block template part if available.
 	 *
 	 * @param object $template      The template object.
 	 * @param string $id            The template ID.
@@ -310,13 +310,13 @@ class Rather_Simple_Polylang_Free_Extras {
 		$localized_id   = "{$theme}//{$localized_slug}";
 
 		// Prevent recursion.
-		remove_filter( 'pre_get_block_template', array( self::get_instance(), 'get_localized_block_template' ), 10 );
+		remove_filter( 'pre_get_block_template', array( self::get_instance(), 'get_localized_block_template_part' ), 10 );
 
 		// Try to load localized version.
 		$localized_template_part = get_block_template( $localized_id, 'wp_template_part' );
 
 		// Re-add filter.
-		add_filter( 'pre_get_block_template', array( self::get_instance(), 'get_localized_block_template' ), 10, 3 );
+		add_filter( 'pre_get_block_template', array( self::get_instance(), 'get_localized_block_template_part' ), 10, 3 );
 
 		if ( $localized_template_part ) {
 			return $localized_template_part;
