@@ -313,7 +313,7 @@ class Rather_Simple_Polylang_Free_Extras {
 		remove_filter( 'pre_get_block_template', array( self::get_instance(), 'get_localized_block_template_part' ), 10 );
 
 		// Try to load localized version.
-		$localized_template_part = get_block_template( $localized_id, 'wp_template_part' );
+		$localized_template_part = get_block_template( $localized_id, $template_type );
 
 		// Re-add filter.
 		add_filter( 'pre_get_block_template', array( self::get_instance(), 'get_localized_block_template_part' ), 10, 3 );
