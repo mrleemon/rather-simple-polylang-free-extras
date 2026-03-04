@@ -15,6 +15,7 @@ import {
 	useState,
 	useEffect
 } from '@wordpress/element';
+import { useSelect } from '@wordpress/data';
 import apiFetch from '@wordpress/api-fetch';
 import { language } from '@wordpress/icons';
 
@@ -62,13 +63,20 @@ addFilter(
  */
 const addLanguageSelectControl = createHigherOrderComponent((BlockEdit) => {
 	return (props) => {
-		const { name, attributes, setAttributes } = props;
+		const { clientId, name, attributes, setAttributes } = props;
+
+		// Get the parent name of the current block.
+		const parentBlockName = useSelect((select) => {
+			const { getBlockRootClientId, getBlockName } = select('core/block-editor');
+			const rootClientId = getBlockRootClientId(clientId);
+			return rootClientId ? getBlockName(rootClientId) : null;
+		}, [clientId]);
 
 		// List of blocks to exclude.
 		const excludedBlocks = ['core/widget-area', 'core/legacy-widget', 'occ/rather-simple-polylang-language-switcher'];
 
-		// If this is an excluded block, just return the original block without the extra UI.
-		if (excludedBlocks.includes(name)) {
+		// If the block has a parent OR is in the excluded list, return the original block without the extra UI.
+		if (parentBlockName !== 'core/widget-area' || excludedBlocks.includes(name)) {
 			return <BlockEdit {...props} />;
 		}
 
