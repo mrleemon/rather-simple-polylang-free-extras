@@ -79,7 +79,7 @@ class Rather_Simple_Polylang_Free_Extras {
 	public function enqueue_block_editor_assets() {
 		$current_screen = get_current_screen();
 
-		// Only proceed if we are on the blockified widgets screen.
+		// Only proceed if we are on the block-based widgets screen.
 		if ( 'widgets' !== $current_screen->base || ! $current_screen->is_block_editor ) {
 			return;
 		}
