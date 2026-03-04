@@ -58,7 +58,7 @@ addFilter(
 );
 
 /**
- * Injects a new panel into the block sidebar.
+ * Injects a control into the block toolbar.
  */
 const addLanguageSelectControl = createHigherOrderComponent((BlockEdit) => {
 	return (props) => {
