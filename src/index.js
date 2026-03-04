@@ -62,15 +62,16 @@ addFilter(
  */
 const addLanguageSelectControl = createHigherOrderComponent((BlockEdit) => {
 	return (props) => {
+		const { name, attributes, setAttributes } = props;
+
 		// List of blocks to exclude.
 		const excludedBlocks = ['core/widget-area', 'core/legacy-widget', 'occ/rather-simple-polylang-language-switcher'];
 
 		// If this is an excluded block, just return the original block without the extra UI.
-		if (excludedBlocks.includes(props.name)) {
+		if (excludedBlocks.includes(name)) {
 			return <BlockEdit {...props} />;
 		}
 
-		const { attributes, setAttributes } = props;
 		const [languages, setLanguages] = useState([]);
 		const [isLoading, setIsLoading] = useState(true);
 
