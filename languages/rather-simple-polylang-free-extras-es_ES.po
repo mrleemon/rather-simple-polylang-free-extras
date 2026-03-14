@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/rather-simple-"
 "polylang-free-extras\n"
-"POT-Creation-Date: 2026-02-15T11:28:11+00:00\n"
-"PO-Revision-Date: 2026-02-15 12:29+0100\n"
+"POT-Creation-Date: 2026-03-14T19:06:42+00:00\n"
+"PO-Revision-Date: 2026-03-14 20:07+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: es_ES\n"
@@ -23,8 +23,9 @@ msgstr ""
 #. Description of the plugin
 #: rather-simple-polylang-free-extras.php
 msgid ""
-"Adds basic REST API support, a language switcher block and a selector to "
-"filter blocks by language to the free version of Polylang."
+"Enhances the free version of Polylang with basic REST API support, a "
+"language switcher block, a language filter for block-based widgets and basic "
+"localization for block template parts."
 msgstr ""
 
 #. Author of the plugin
@@ -38,84 +39,63 @@ msgid "http://oscarciutat.com/code/"
 msgstr ""
 
 #: build/blocks/language-switcher/index.js:1
-#: src/blocks/language-switcher/edit.js:60
 msgid "Settings"
 msgstr "Ajustes"
 
 #: build/blocks/language-switcher/index.js:1
-#: src/blocks/language-switcher/edit.js:62
 msgid "Displays as a dropdown"
 msgstr "Muestra como desplegable"
 
 #: build/blocks/language-switcher/index.js:1
-#: src/blocks/language-switcher/edit.js:67
 msgid "Displays language names"
 msgstr "Muestra los nombres de los idiomas"
 
 #: build/blocks/language-switcher/index.js:1
-#: src/blocks/language-switcher/edit.js:73
 msgid "Display language names as"
 msgstr "Muestra los nombres de los idiomas como"
 
 #: build/blocks/language-switcher/index.js:1
-#: src/blocks/language-switcher/edit.js:76
 msgid "Name"
 msgstr "Nombre"
 
 #: build/blocks/language-switcher/index.js:1
-#: src/blocks/language-switcher/edit.js:77
 msgid "Slug"
 msgstr "Slug"
 
 #: build/blocks/language-switcher/index.js:1
-#: src/blocks/language-switcher/edit.js:83
 msgid "Displays flags"
 msgstr "Muestra las banderas"
 
 #: build/blocks/language-switcher/index.js:1
-#: src/blocks/language-switcher/edit.js:88
 msgid "Forces link to front page"
 msgstr "Fuerza un enlace a la página de inicio"
 
 #: build/blocks/language-switcher/index.js:1
-#: src/blocks/language-switcher/edit.js:94
 msgid "Hides the current language"
 msgstr "Oculta el idioma actual"
 
 #: build/blocks/language-switcher/index.js:1
-#: src/blocks/language-switcher/edit.js:100
 msgid "Hides languages with no translation"
 msgstr "Oculta los idiomas sin traducción"
 
 #: build/blocks/language-switcher/index.js:1
-#: src/blocks/language-switcher/edit.js:105
 msgid "Hides empty languages"
 msgstr "Oculta los idiomas vacíos"
 
-#: src/index - orig.js:94
-msgid "Block visibility by language"
-msgstr "Visibilidad del bloque por idioma"
-
-#: src/index - orig.js:99
-msgid "This block is displayed for:"
-msgstr "Este bloque se muestra para:"
-
-#: src/index - orig.js:103 src/index.js:118
-msgid "All languages"
-msgstr "Todos los idiomas"
-
-#: src/index.js:115
+#: build/index.js:1 src/index.js:130
 msgid "Select language"
 msgstr "Selecciona un idioma"
 
+#: build/index.js:1 src/index.js:133
+msgid "All languages"
+msgstr "Todos los idiomas"
+
 #: build/blocks/language-switcher/block.json
-#: src/blocks/language-switcher/block.json
 msgctxt "block title"
 msgid "Language Switcher"
 msgstr "Selector de idioma"
 
 #: build/blocks/language-switcher/block.json
-#: src/blocks/language-switcher/block.json
 msgctxt "block description"
 msgid "Display a language switcher."
 msgstr "Muestra un selector de idioma."
