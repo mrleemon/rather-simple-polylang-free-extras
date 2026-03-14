@@ -199,7 +199,6 @@ class Rather_Simple_Polylang_Free_Extras {
 		$excluded_blocks = array(
 			'core/widget-area',
 			'core/legacy-widget',
-			'occ/rather-simple-polylang-language-switcher',
 		);
 
 		// If this is an excluded block, return args unchanged.
