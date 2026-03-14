@@ -60,7 +60,6 @@ class Rather_Simple_Polylang_Free_Extras {
 	public function plugin_setup() {
 		add_action( 'enqueue_block_editor_assets', array( $this, 'enqueue_block_editor_assets' ) );
 		add_action( 'rest_api_init', array( $this, 'rest_api_init' ) );
-		add_action( 'init', array( $this, 'register_block' ) );
 		add_filter( 'register_block_type_args', array( $this, 'register_block_type_args' ), 10, 2 );
 		add_filter( 'render_block', array( $this, 'render_block' ), 10, 2 );
 		add_filter( 'pre_get_block_template', array( $this, 'get_localized_block_template_part' ), 10, 3 );
@@ -179,25 +178,6 @@ class Rather_Simple_Polylang_Free_Extras {
 		// Add the language to the query.
 		$args['lang'] = $lang;
 		return $args;
-	}
-
-	/**
-	 * Registers block
-	 *
-	 * @throws Error If block is not built.
-	 */
-	public function register_block() {
-		if ( ! function_exists( 'register_block_type' ) ) {
-			// The block editor is not active.
-			return;
-		}
-
-		// Register the block.
-		register_block_type( __DIR__ . '/build/blocks/language-switcher' );
-
-		// Load translations.
-		$script_handle = generate_block_asset_handle( 'occ/rather-simple-polylang-language-switcher', 'editorScript' );
-		wp_set_script_translations( $script_handle, 'rather-simple-polylang-free-extras', plugin_dir_path( __FILE__ ) . 'languages' );
 	}
 
 	/**
