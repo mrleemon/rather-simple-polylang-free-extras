@@ -33,7 +33,7 @@ import './editor.scss';
  */
 function addPllLangAttribute(settings, name) {
 	// List of blocks to exclude.
-	const excludedBlocks = ['core/widget-area', 'core/legacy-widget', 'occ/rather-simple-polylang-language-switcher'];
+	const excludedBlocks = ['core/widget-area', 'core/legacy-widget'];
 
 	// If this is an excluded block, return settings unchanged.
 	if (excludedBlocks.includes(name)) {
@@ -73,7 +73,7 @@ const addLanguageSelectControl = createHigherOrderComponent((BlockEdit) => {
 		}, [clientId]);
 
 		// List of blocks to exclude.
-		const excludedBlocks = ['core/widget-area', 'core/legacy-widget', 'occ/rather-simple-polylang-language-switcher'];
+		const excludedBlocks = ['core/widget-area', 'core/legacy-widget'];
 
 		// If the block has a parent OR is in the excluded list, return the original block without the extra UI.
 		if (parentBlockName !== 'core/widget-area' || excludedBlocks.includes(name)) {
