@@ -285,6 +285,7 @@ class Rather_Simple_Polylang_Free_Extras {
 
 		list( $theme, $slug ) = $parts;
 
+		// Templates files must be named like: slug__lang.html, e.g. header__en.html.
 		$localized_slug = "{$slug}__{$lang}";
 		$localized_id   = "{$theme}//{$localized_slug}";
 
